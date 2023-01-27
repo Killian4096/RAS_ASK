@@ -1,10 +1,10 @@
 #include <avr/io.h>
-#include "OSEPP_Motor_Shield.h"
-#include <util/delay.h>
+#include "ESC.h"
 #include "USART.h"
+#include <util/delay.h>
 
 void main(void){
-    ESC_Init();
     USART_Init();
+    ESC_Init();
     while(1);
 }

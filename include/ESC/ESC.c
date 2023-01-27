@@ -15,7 +15,7 @@ void ESC_Init(void){
 
 void ESC_Set_Speed(uint8_t value){
     //Send value to register
-    OC0B = value;
+    OCR0B = value;
 }
 
 

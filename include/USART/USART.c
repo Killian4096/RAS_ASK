@@ -20,12 +20,12 @@ void USART_Init(void){
 
 uint16_t USART_Receive(void){
     while(!(UCSR0A & (1<<RXC0)));
-    status = USCR0A
-    resh = UCSR0B;
-    resl = UDR0;
+    uint8_t status = UCSR0A;
+    uint8_t resh = UCSR0B;
+    uint8_t resl = UDR0;
     
-    if (status & (1<<FE0)|(1<<DOR0)|(1<<UPE0))
-        return -1
+    if (status & ((1<<FE0)|(1<<DOR0)|(1<<UPE0)))
+        return -1;
     
     resh = (resh >> 1) & 0x01;
     return ((resh << 8) | resl);
@@ -36,9 +36,9 @@ void USART_Transmit(uint16_t data){
     while(!(UCSR0A & (1<<UDRE0)));
 
     //Copy 9th bit
-    UCSR0B &= ~(1<<TXB8);
+    UCSR0B &= ~(1<<TXB80);
     if(data & 0x0100)
-        USCR0B |= (1<<TXB8);
+        UCSR0B |= (1<<TXB80);
 
     //Put data into buffer
     UDR0 = data;
